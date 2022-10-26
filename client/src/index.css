@@ -1,11 +1,62 @@
-body {
+/*
+1. Posicionamiento
+1. Modelo de caja (Box Model)
+3. Tipografia (Fuentes y tamaño de Fuentes)
+4. Visuales (Shadow-Box, Border-Radius, gradient, etc)
+5. Otros
+*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;500&display=swap');
+:root {
+  /* Variables de Color */
+  --fav-green: #007a3d;
+  --secondary-color: #b8860b;
+  --black: #201e1c;
+  --just-white: #fff;
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: #777;
+  /* Fuentes y tamanos */
+  --font-sans: 'DM Sans', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --size-300: 300;
+  --size-400: 400;
+  --size-500: 500;
+  --size-700: 700;
+}
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-family: var(--font-sans);
+}
+/*  Universal box-sizing : */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  position: relative;
+}
+html {
+  font-size: 62.5%;
+  font-family: 'DM Sans', sans-serif;
+}
+body,
+input {
+  font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+  position: relative;
+}
+
+/* body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

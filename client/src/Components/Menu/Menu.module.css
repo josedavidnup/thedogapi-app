@@ -1,0 +1,50 @@
+.menu {
+  height: 70px;
+  min-width: 320px;
+  height: 180px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--fav-green);
+}
+.menu figure {
+  width: 85px;
+}
+.menu figure img {
+  width: 100%;
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.navBar ul {
+  display: flex;
+}
+
+ul li {
+  list-style: none;
+  padding: 10px;
+  color: white;
+}
+
+.lis {
+  font-size: 1.6rem;
+  font-weight: var(--size-700);
+}
+
+@media only screen and (min-width: 800px) {
+  .menu {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+  }
+  .lis {
+    font-size: 2rem;
+    font-weight: var(--size-700);
+  }
+}

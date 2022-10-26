@@ -32,10 +32,10 @@ router.get('/', async (req, res, next) => {
   }
 }); */
 
-router.get('/:idRaza', async (req, res, next) => {
-  const { idRaza } = req.params;
+router.get('/:id', async (req, res, next) => {
+  const { id } = req.params;
   try {
-    const dog = await getBreedById(idRaza);
+    const dog = await getBreedById(id);
     res.status(200).json(dog);
   } catch (error) {
     next(error);
@@ -54,6 +54,7 @@ router.post('/', async (req, res, next) => {
     image,
     temperaments,
   } = req.body;
+
   try {
     const newDog = await createBreed(
       name,
@@ -66,7 +67,7 @@ router.post('/', async (req, res, next) => {
       image
     );
     const temp = await Temperament.findAll({
-      where: { id: temperaments },
+      where: { name: temperaments },
     });
     await newDog.addTemperaments(temp);
     res.status(200).json(newDog);
@@ -75,8 +76,8 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.patch('/:idRaza', async (req, res, next) => {
-  const { idRaza } = req.params;
+router.patch('/:id', async (req, res, next) => {
+  const { id } = req.params;
   const {
     name,
     min_height,
@@ -90,7 +91,7 @@ router.patch('/:idRaza', async (req, res, next) => {
   } = req.params;
   try {
     const dog = await updateBreed(
-      idRaza,
+      id,
       name,
       min_height,
       max_height,
@@ -109,10 +110,10 @@ router.patch('/:idRaza', async (req, res, next) => {
   }
 });
 
-router.delete('/:idRaza', async (req, res, next) => {
-  const { idRaza } = req.params;
+router.delete('/:id', async (req, res, next) => {
+  const { id } = req.params;
   try {
-    const dog = await deleteBreed(idRaza);
+    const dog = await deleteBreed(id);
     res
       .status(200)
       .json(dog && { message: `Breed has been deleted successfully` });

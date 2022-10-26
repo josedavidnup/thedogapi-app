@@ -1,0 +1,60 @@
+.filter {
+  min-width: 320px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: stretch;
+  align-items: center;
+  gap: 15px;
+}
+.titleFilter {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: var(--size-700);
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+}
+
+.buttonFilter {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-color);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.imgFilter {
+  width: 30px;
+}
+
+.filterUp {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.filterDown {
+  display: flex;
+  gap: 20px;
+}
+.containerSelect {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .filterContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+  .titleFilter {
+    font-size: 1.5rem;
+  }
+}

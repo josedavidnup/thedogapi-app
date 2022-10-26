@@ -17,22 +17,22 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       min_height: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
           isGreater(value) {
-            if (value >= this.max_height) {
+            if (parseInt(value) >= parseInt(this.max_height)) {
               throw new Error('Min Height must be smaller than Max Height.');
             }
           },
         },
       },
       max_height: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
           isSmaller(value) {
-            if (value <= this.min_height) {
+            if (parseInt(value) <= parseInt(this.min_height)) {
               throw new Error('Max Height must be greater than Min Height.');
             }
           },
@@ -45,22 +45,22 @@ module.exports = (sequelize) => {
         },
       },
       min_weight: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
           isGreater(value) {
-            if (value >= this.max_weight) {
+            if (parseInt(value) >= parseInt(this.max_weight)) {
               throw new Error('Min Weight must be smaller than Max Weight.');
             }
           },
         },
       },
       max_weight: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
           isSmaller(value) {
-            if (value <= this.min_weight) {
+            if (parseInt(value) <= parseInt(this.min_weight)) {
               throw new Error('Max Weight must be greater than Min Weight.');
             }
           },
@@ -73,10 +73,10 @@ module.exports = (sequelize) => {
         },
       },
       min_life_span: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         validate: {
           isGreater(value) {
-            if (value >= this.max_life_span) {
+            if (parseInt(value) >= parseInt(this.max_life_span)) {
               throw new Error(
                 'Min life span must be smaller than Max life span.'
               );
@@ -85,10 +85,10 @@ module.exports = (sequelize) => {
         },
       },
       max_life_span: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         validate: {
           isSmaller(value) {
-            if (value <= this.min_life_span) {
+            if (parseInt(value) <= parseInt(this.min_life_span)) {
               throw new Error(
                 'Max life span must be greater than Min life span.'
               );
@@ -104,7 +104,6 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     { timestamps: false }

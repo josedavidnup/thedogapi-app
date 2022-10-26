@@ -10,20 +10,20 @@ const router = Router();
 
 router.get('/', async (req, res, next) => {
   try {
-    let temperaments = await Temperament.findAll({
-      attributes: ['name'],
-    });
+    let temperaments = await Temperament.findAll();
     if (!temperaments.length) {
-      temperaments = temperaments = await getTemperaments();
+      temperaments = await getTemperaments();
       temperaments.forEach((name) => {
         Temperament.create({ name: name });
       });
     } else {
-      temperaments = temperaments.map((name) => name.name);
+      temperaments = temperaments.map((name) => {
+        return { id: name.id, name: name.name };
+      });
     }
     res.status(200).json(temperaments);
   } catch (error) {
-    next();
+    next(error);
     // res.status(400).json({ error: error.message });
   }
 });

@@ -1,4 +1,5 @@
 const getApiDogs = require('./apiRequest.controller');
+const { Temperament } = require('../db');
 
 const getTemperaments = async () => {
   try {

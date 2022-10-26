@@ -1,0 +1,30 @@
+.footer {
+  min-width: 320px;
+  width: 100%;
+  color: var(--just-white);
+  background-color: var(--fav-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: var(--size-500);
+}
+
+.footerCreator {
+  margin-top: 50px;
+}
+
+.footerDown {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.footerIcon {
+  width: 35px;
+}
+
+.footer div {
+  padding: 10px;
+}

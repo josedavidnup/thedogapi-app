@@ -21,6 +21,7 @@ const getBreeds = async (name) => {
           .join(', '),
       };
     });
+
     const apiDogsResponse = await getApiDogs();
     let apiDogs = apiDogsResponse.map((breed) => {
       return {
@@ -41,7 +42,7 @@ const getBreeds = async (name) => {
     }
     return dogsMerge;
   } catch (err) {
-    return { error: err.message };
+    next(err);
   }
 };
 
@@ -65,11 +66,11 @@ const getBreeds = async (name) => {
   }
 }; */
 
-const getBreedById = async (idRaza) => {
+const getBreedById = async (id) => {
   const allDogs = await getBreeds();
-  const apiDog = allDogs.find((dog) => dog.id == idRaza);
+  const apiDog = allDogs.find((dog) => dog.id == id);
   if (!apiDog) {
-    throw new Error(`Dog's name not found`);
+    throw new Error(`Dog's id not found`);
   }
   return apiDog;
 };
@@ -97,26 +98,26 @@ const createBreed = async (
   return newBreed;
 };
 
-const updateBreed = async (idRaza) => {
+const updateBreed = async (id) => {
   const allDogs = await getBreeds();
-  const dog = allDogs.find((dog) => dog.id == idRaza);
-  await allDogs.filter((dog) => dog.id !== idRaza);
+  const dog = allDogs.find((dog) => dog.id == id);
+  await allDogs.filter((dog) => dog.id !== id);
   if (!dog) {
     throw new Error(`Dog's name not found`);
   }
   return `${dog.name} has been deleted`;
 };
 
-const deleteBreed = async (idRaza) => {
+const deleteBreed = async (id) => {
   const apiDogsResponse = await getApiDogs();
-  const dog = allDogs.findByPk((dog) => dog.id == idRaza);
+  const dog = allDogs.findByPk((dog) => dog.id == id);
   if (dog) {
     await Dog.destroy({
       where: {
-        id: idRaza,
+        id: id,
       },
     });
-  } else if (apiDogsResponse.find((dog) => dog.id == idRaza)) {
+  } else if (apiDogsResponse.find((dog) => dog.id == id)) {
   }
 
   return `${dog.name} has been deleted`;

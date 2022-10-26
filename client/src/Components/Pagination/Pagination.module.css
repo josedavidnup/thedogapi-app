@@ -1,0 +1,79 @@
+.noBUtton {
+  display: none;
+}
+.numsMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+.numsMobile button {
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  padding: 10px;
+  gap: 20px;
+  border-radius: 15px;
+  font-family: var(--font-inter);
+  font-weight: var(--size-700);
+  background-color: var(--secondary-color);
+  color: var(--just-white);
+  cursor: pointer;
+}
+
+.numsMobile p {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: var(--size-700);
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #6ab498;
+  color: #f9f9f9;
+  border: 0;
+  cursor: pointer;
+}
+
+.nums {
+  display: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 15px;
+  font-family: var(--font-inter);
+  font-weight: var(--size-700);
+  background-color: var(--secondary-color);
+  color: var(--just-white);
+  cursor: pointer;
+}
+
+.active {
+  background-color: var(--fav-green);
+  border: solid 2px var(--fav-green);
+  border-radius: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .filterContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+  .titleFilter {
+    font-size: 1.5rem;
+  }
+  .nums ul {
+    margin-top: 10px;
+  }
+
+  .nums ul {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+}

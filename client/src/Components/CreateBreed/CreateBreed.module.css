@@ -1,0 +1,150 @@
+.formContainer {
+  min-width: 320px;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  color: var(--just-white);
+  font-size: 1.2rem;
+}
+
+.form {
+  margin: 30px 0;
+  padding: 15px 0;
+}
+
+.inputContainer {
+  display: flex;
+  justify-items: center;
+  max-width: 90%;
+}
+
+.input {
+  width: 50px;
+}
+
+.inputName,
+.inputImage {
+  width: 70%;
+}
+
+.inputName,
+.input,
+.inputImage {
+  border-radius: 15px;
+  border: none;
+  margin-left: 5px;
+  padding: 1px 10px;
+}
+
+.formContainer form {
+  display: flex;
+  width: 80%;
+  height: 90%;
+  min-width: 300px;
+  border-radius: 15px;
+  background-color: var(--fav-green);
+  flex-direction: column;
+  gap: 10px;
+  place-content: center;
+  place-items: center;
+}
+
+.danger {
+  color: red;
+}
+
+.inputContainerName {
+  width: 90%;
+  margin-top: 15px;
+}
+
+.inputContainerImage {
+  width: 90%;
+}
+
+.inputContainer {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.inputContainer div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-section {
+  width: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.form-section i b {
+  padding: 0 5px;
+}
+
+.chooseTemperaments {
+  font-weight: var(--size-500);
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+}
+
+.footerButton {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 5px;
+  font-family: var(--font-sans);
+  font-weight: var(--size-700);
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #6ab498;
+  font-size: 2em;
+  color: #f9f9f9;
+  border: 0;
+  cursor: pointer;
+}
+
+.footerButton:hover {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.26);
+}
+
+.containerSelect {
+  display: flex;
+  place-content: center;
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .formContainer {
+    font-size: 2rem;
+    align-content: center;
+  }
+
+  .formContainer form {
+    max-width: 768px;
+  }
+
+  .inputName,
+  .input,
+  .inputImage {
+    width: 80%;
+    height: 30px;
+    margin-bottom: 50px;
+  }
+  .inputImage {
+    margin-bottom: 20px;
+  }
+
+  .chooseTemperaments {
+    font-size: 2rem;
+  }
+
+  .containerSelect select {
+    font-size: 2rem;
+  }
+}
