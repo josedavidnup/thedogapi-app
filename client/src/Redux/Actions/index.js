@@ -18,10 +18,10 @@ import {
 export const getAllBreeds = () => {
   return async function (dispatch) {
     // const favorites = getState().favorites
-    return fetch('http://localhost:3001/api/dogs')
-      .then((responde) => responde.json())
-      .then((data) => {
-        dispatch({ type: GET_ALL_BREEDS, payload: data });
+    return axios
+      .get('/api/dogs')
+      .then((response) => {
+        dispatch({ type: GET_ALL_BREEDS, payload: response.data });
       })
       .catch((error) => {
         if (error.response) {
@@ -35,20 +35,18 @@ export const getAllBreeds = () => {
 
 export const getByName = (name) => {
   return async function (dispatch) {
-    return fetch(`http://localhost:3001/api/dogs?name=${name}`)
-      .then((responde) => responde.json())
-      .then((data) => {
-        dispatch({ type: GET_BY_NAME, payload: data });
-      });
+    return axios.get(`/api/dogs?name=${name}`).then((response) => {
+      dispatch({ type: GET_BY_NAME, payload: response.data });
+    });
   };
 };
 
 export const getBreedDetail = (id) => {
   return async (dispatch) => {
-    return fetch(`http://localhost:3001/api/dogs/${id}`)
-      .then((responde) => responde.json())
-      .then((data) => {
-        dispatch({ type: GET_BREED_DETAIL, payload: data });
+    return axios
+      .get(`/api/dogs/${id}`)
+      .then((response) => {
+        dispatch({ type: GET_BREED_DETAIL, payload: response.data });
       })
       .catch(function () {
         console.log('error');
@@ -72,9 +70,7 @@ export const createBreed = (breed) => async () => {
     temperaments: breed.temperaments,
   };
   try {
-    await axios
-      .post('http://localhost:3001/api/dogs/', dogBreed)
-      .then(alert('Creado'));
+    await axios.post('/api/dogs/', dogBreed).then(alert('Creado'));
   } catch (error) {
     alert(`Este es el error de create ${error}`);
   }
@@ -96,11 +92,9 @@ export const removeFavorites = (id) => {
 
 export const getTemperaments = () => {
   return async (dispatch) => {
-    return fetch(`http://localhost:3001/api/temperaments`)
-      .then((responde) => responde.json())
-      .then((data) => {
-        dispatch({ type: GET_TEMPERAMENTS, payload: data });
-      });
+    return axios.get(`/api/temperaments`).then((response) => {
+      dispatch({ type: GET_TEMPERAMENTS, payload: response.data });
+    });
   };
 };
 

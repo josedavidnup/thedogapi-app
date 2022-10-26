@@ -64,6 +64,9 @@
     flex-direction: row;
     gap: 15px;
   }
+  .nums {
+    display: block;
+  }
   .titleFilter {
     font-size: 1.5rem;
   }
@@ -75,5 +78,8 @@
     display: flex;
     justify-content: center;
     gap: 4px;
+  }
+  .numsMobile {
+    display: none;
   }
 }
