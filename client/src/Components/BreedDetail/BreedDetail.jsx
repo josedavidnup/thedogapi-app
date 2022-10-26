@@ -23,7 +23,9 @@ function BreedDetail() {
   const history = useHistory();
 
   async function getBreedDetail(id) {
-    const breed = await axios.get(`/api/dogs/${id}`);
+    const breed = await axios.get(
+      `https://dog-api-jd.herokuapp.com/api/dogs/${id}`
+    );
     return setBreed(breed.data);
   }
 

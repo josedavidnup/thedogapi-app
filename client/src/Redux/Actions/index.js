@@ -42,6 +42,7 @@ export const getByName = (name) => {
 };
 
 export const getBreedDetail = (id) => {
+  console.log();
   return async (dispatch) => {
     return axios
       .get(`/api/dogs/${id}`)
