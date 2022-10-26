@@ -216,13 +216,12 @@ function CreateBreed() {
                 return <option key={e.name}>{e.name}</option>;
               })}
             </select>
-            <span className={style.focus}></span>
           </div>
         </div>
-        <div className='form-section'>
+        <div className={`${style.form_section}`}>
           {form.temperaments?.map((e) => (
             <p value={e} key={e} onClick={handleDelete}>
-              {e} <b>✖</b>
+              <i>{e}</i> <b>✖</b>
             </p>
           ))}
         </div>

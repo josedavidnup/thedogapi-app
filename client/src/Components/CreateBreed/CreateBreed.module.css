@@ -81,6 +81,7 @@
   width: 90%;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .form-section i b {
@@ -117,6 +118,14 @@
   display: flex;
   place-content: center;
   margin-top: 10px;
+}
+
+.containerSelect select {
+  cursor: pointer;
+}
+
+.form_section p {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
