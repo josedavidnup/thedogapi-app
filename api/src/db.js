@@ -2,8 +2,8 @@
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-// const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-const { dbUser, dbPassword, dbHost, dbName } = require('../utils/config');
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+// const { dbUser, dbPassword, dbHost, dbName } = require('../utils/config');
 
 // const sequelize = new Sequelize(
 //   `postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`,
@@ -16,12 +16,12 @@ const { dbUser, dbPassword, dbHost, dbName } = require('../utils/config');
 let sequelize =
   process.env.NODE_ENV === 'production'
     ? new Sequelize({
-        database: dbName,
+        database: DB_NAME,
         dialect: 'postgres',
-        host: dbHost,
+        host: DB_HOST,
         port: 5432,
-        username: dbUser,
-        password: dbPassword,
+        username: DB_USER,
+        password: DB_PASSWORD,
         pool: {
           max: 3,
           min: 1,
@@ -37,10 +37,13 @@ let sequelize =
         },
         ssl: true,
       })
-    : new Sequelize(`postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`, {
-        logging: false,
-        native: false,
-      });
+    : new Sequelize(
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+        {
+          logging: false,
+          native: false,
+        }
+      );
 
 const basename = path.basename(__filename);
 
