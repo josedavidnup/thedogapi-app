@@ -37,7 +37,6 @@ function CreateBreed() {
         [e.target.name]: e.target.value,
       };
     });
-
     setErrors(
       validator({
         ...form,
@@ -53,7 +52,7 @@ function CreateBreed() {
     });
     setErrors(validator(form));
   };
-
+  console.log(form.temperaments);
   const handleDelete = (e) => {
     setForm({
       ...form,
@@ -67,6 +66,16 @@ function CreateBreed() {
   // console.log(errors);
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    if (
+      !form.name &&
+      !form.min_height &&
+      !form.max_height &&
+      !form.min_weight &&
+      !form.max_weight &&
+      !form.temperaments.length
+    ) {
+      return alert('You should fill all inputs require');
+    }
     dispatch(createBreed(form));
     setForm({
       name: '',
@@ -90,7 +99,7 @@ function CreateBreed() {
       <form onSubmit={handleOnSubmit} className={style.form}>
         <div className={style.inputContainerName}>
           <label htmlFor='' className={style.labelForm}>
-            Name
+            Name*
           </label>
           <input
             className={`${style.inputName}`}
@@ -104,7 +113,7 @@ function CreateBreed() {
         <div className={style.inputContainer}>
           <div>
             <label htmlFor='' className={style.labelForm}>
-              Min height
+              Min height*
             </label>
             <input
               className={`${style.input} `}
@@ -118,7 +127,7 @@ function CreateBreed() {
 
           <div>
             <label htmlFor='' className={style.labelForm}>
-              Max height
+              Max height*
             </label>
             <input
               className={`${style.input} `}
@@ -133,7 +142,7 @@ function CreateBreed() {
         <div className={style.inputContainer}>
           <div>
             <label htmlFor='' className={style.labelForm}>
-              Min weight
+              Min weight*
             </label>
             <input
               className={`${style.input} `}
@@ -146,7 +155,7 @@ function CreateBreed() {
           </div>
           <div>
             <label htmlFor='' className={style.labelForm}>
-              Max weight
+              Max weight*
             </label>
             <input
               className={`${style.input} `}
@@ -203,14 +212,18 @@ function CreateBreed() {
         </div>
         <div>
           <p htmlFor='standard-select' className={style.chooseTemperaments}>
-            Choose temperaments
+            Choose temperaments*
           </p>
           <div className={`${style.containerSelect}`}>
             <select
               id='standard-select'
-              value={form.temperaments}
-              onChange={(e) => addTemperaments(e.target.value)}
-              multiple={true}
+              name='temperaments'
+              multiple={false}
+              onChange={(e) =>
+                form.temperaments.includes(e.target.value)
+                  ? alert('Ya existe')
+                  : addTemperaments(e.target.value)
+              }
             >
               {temperaments?.map((e) => {
                 return <option key={e.name}>{e.name}</option>;

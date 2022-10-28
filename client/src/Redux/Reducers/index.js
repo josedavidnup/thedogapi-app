@@ -18,6 +18,7 @@ const initialState = {
   breeds: [],
   breedDetail: {},
   favorites: [],
+  filterBreeds: [],
   temperaments: [],
   breedsPerPage: 8,
   currentPage: 10,

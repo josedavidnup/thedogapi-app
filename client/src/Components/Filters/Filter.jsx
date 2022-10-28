@@ -5,7 +5,7 @@ import z_a from '../../Assets/Images/z-a-order.png';
 import weightUp from '../../Assets/Images/dog-weight-up.png';
 import weightDown from '../../Assets/Images/dog-weight-down.png';
 import reset from '../../Assets/Images/reset-filter.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   zaFilter,
   azFilter,
@@ -15,9 +15,9 @@ import {
   weightFilterDown,
 } from '../../Redux/Actions';
 
-function Filter({ temperaments }) {
+function Filter() {
   const dispatch = useDispatch();
-
+  const temperaments = useSelector((state) => state.temperaments);
   return (
     <section className={style.filter}>
       <div className={style.titleContanier}>

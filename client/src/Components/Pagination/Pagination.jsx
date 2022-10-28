@@ -25,10 +25,14 @@ function Pagination({ breeds, breedsPerPage, handleSetPage, currentPage }) {
       </div>
       <div className={style.numsMobile}>
         <button
-          onClick={() => handleSetPage(currentPage - 1)}
-          className={`${currentPage ? style.active : style.list} ${
-            currentPage === 1 ? style.noBUtton : ''
-          }`}
+          onClick={() => handleSetPage(1)}
+          className={currentPage ? style.active : style.list}
+        >
+          {'<<'}
+        </button>
+        <button
+          onClick={() => handleSetPage(currentPage > 1 ? currentPage - 1 : 1)}
+          className={currentPage ? style.active : style.list}
         >
           Prev
         </button>
@@ -38,6 +42,12 @@ function Pagination({ breeds, breedsPerPage, handleSetPage, currentPage }) {
           className={currentPage ? style.active : style.list}
         >
           Next
+        </button>
+        <button
+          onClick={() => handleSetPage(numCal[numCal.length - 1])}
+          className={currentPage ? style.active : style.list}
+        >
+          {'>>'}
         </button>
         <ul></ul>
       </div>
