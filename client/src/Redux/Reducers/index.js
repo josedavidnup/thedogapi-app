@@ -65,14 +65,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
       let aZ = [...state.breeds.sort((a, b) => a.name.localeCompare(b.name))];
       return {
         ...state,
-        breeds: aZ,
+        filterBreeds: aZ,
       };
 
     case Z_A_FILTER:
       let zA = [...state.breeds.sort((a, b) => b.name.localeCompare(a.name))];
       return {
         ...state,
-        breeds: zA,
+        filterBreeds: zA,
       };
 
     case TEMPERAMENT_FILTER:
@@ -83,11 +83,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       });
       return {
         ...state,
-        breeds: tempFilter,
+        filterBreeds: tempFilter,
       };
     case WEIGHT_FILTER_UP:
       state.breeds.forEach((e) => {
-        let filter = e.weight.split(' - ');
+        let filter = e.weight.toString().split(' - ');
         e.weight = Math.round(
           filter.reduce((prev, next) => parseInt(prev) + parseInt(next)) /
             filter.length
@@ -96,11 +96,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       let up = [...state.breeds.sort((a, b) => a.weight - b.weight)];
       return {
         ...state,
-        breeds: up,
+        filterBreeds: up,
       };
     case WEIGHT_FILTER_DOWN:
       state.breeds.forEach((e) => {
-        let filter = e.weight.split(' - ');
+        let filter = e.weight.toString().split(' - ');
         e.weight = Math.round(
           filter.reduce((prev, next) => parseInt(prev) + parseInt(next)) /
             filter.length
@@ -109,7 +109,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       let down = [...state.breeds.sort((a, b) => b.weight - a.weight)];
       return {
         ...state,
-        breeds: down,
+        filterBreeds: down,
       };
     case DELETE_BREED:
       return {

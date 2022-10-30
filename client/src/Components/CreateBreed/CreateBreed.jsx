@@ -50,9 +50,9 @@ function CreateBreed() {
       ...form,
       temperaments: [...form.temperaments, name],
     });
-    setErrors(validator(form));
+    console.log(form.temperaments);
+    setErrors(validator(form.temperaments));
   };
-  console.log(form.temperaments);
   const handleDelete = (e) => {
     setForm({
       ...form,
@@ -67,12 +67,13 @@ function CreateBreed() {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (
-      !form.name &&
-      !form.min_height &&
-      !form.max_height &&
-      !form.min_weight &&
-      !form.max_weight &&
-      !form.temperaments.length
+      ![
+        form.name,
+        form.min_height,
+        form.max_height,
+        form.min_weight,
+        form.max_weight,
+      ].every(Boolean)
     ) {
       return alert('You should fill all inputs require');
     }
@@ -231,11 +232,11 @@ function CreateBreed() {
             </select>
           </div>
         </div>
-        <div className={`${style.form_section}`}>
+        <div className={style.form_section}>
           {form.temperaments?.map((e) => (
-            <p value={e} key={e} onClick={handleDelete}>
-              <i>{e}</i> <b>✖</b>
-            </p>
+            <i value={e} key={e} onClick={handleDelete}>
+              {e} <b>✖</b>
+            </i>
           ))}
         </div>
         {errors.name && <p className={style.danger}>{errors.name}</p>}

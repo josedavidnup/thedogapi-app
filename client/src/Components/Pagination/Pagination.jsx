@@ -38,7 +38,13 @@ function Pagination({ breeds, breedsPerPage, handleSetPage, currentPage }) {
         </button>
         <p>{currentPage}</p>
         <button
-          onClick={() => handleSetPage(currentPage + 1)}
+          onClick={() =>
+            handleSetPage(
+              currentPage < numCal[numCal.length - 1]
+                ? currentPage + 1
+                : numCal[numCal.length - 1]
+            )
+          }
           className={currentPage ? style.active : style.list}
         >
           Next

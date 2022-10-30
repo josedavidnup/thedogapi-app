@@ -36,8 +36,8 @@ const getBreeds = async (name) => {
     });
     let dogsMerge = apiDogs.concat(dbDogs);
     if (name) {
-      return dogsMerge.filter((dog) =>
-        dog.name.toLowerCase().includes(name.trim().toLowerCase())
+      return await dogsMerge.filter((dog) =>
+        dog.name.trim().toLowerCase().includes(name.trim().toLowerCase())
       );
     }
     return dogsMerge;
