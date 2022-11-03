@@ -16,6 +16,7 @@ import {
 
 const initialState = {
   breeds: [],
+  allBreeds: [],
   breedDetail: {},
   favorites: [],
   filterBreeds: [],
@@ -30,6 +31,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         breeds: payload,
+        allBreeds: payload,
       };
     case GET_BY_NAME:
       return {
@@ -62,54 +64,58 @@ const rootReducer = (state = initialState, { type, payload }) => {
         temperaments: payload,
       };
     case A_Z_FILTER:
-      let aZ = [...state.breeds.sort((a, b) => a.name.localeCompare(b.name))];
+      let aZ = [
+        ...state.allBreeds.sort((a, b) => a.name.localeCompare(b.name)),
+      ];
       return {
         ...state,
-        filterBreeds: aZ,
+        breeds: aZ,
       };
 
     case Z_A_FILTER:
-      let zA = [...state.breeds.sort((a, b) => b.name.localeCompare(a.name))];
+      let zA = [
+        ...state.allBreeds.sort((a, b) => b.name.localeCompare(a.name)),
+      ];
       return {
         ...state,
-        filterBreeds: zA,
+        breeds: zA,
       };
 
     case TEMPERAMENT_FILTER:
       let tempFilter = [];
-      state.breeds.forEach((e) => {
+      state.allBreeds.forEach((e) => {
         let filter = e.temperaments?.split(', ');
         filter?.includes(payload) && tempFilter.push(e);
       });
       return {
         ...state,
-        filterBreeds: tempFilter,
+        breeds: tempFilter,
       };
     case WEIGHT_FILTER_UP:
-      state.breeds.forEach((e) => {
+      state.allBreeds.forEach((e) => {
         let filter = e.weight.toString().split(' - ');
         e.weight = Math.round(
           filter.reduce((prev, next) => parseInt(prev) + parseInt(next)) /
             filter.length
         );
       });
-      let up = [...state.breeds.sort((a, b) => a.weight - b.weight)];
+      let up = [...state.allBreeds.sort((a, b) => a.weight - b.weight)];
       return {
         ...state,
-        filterBreeds: up,
+        breeds: up,
       };
     case WEIGHT_FILTER_DOWN:
-      state.breeds.forEach((e) => {
+      state.allBreeds.forEach((e) => {
         let filter = e.weight.toString().split(' - ');
         e.weight = Math.round(
           filter.reduce((prev, next) => parseInt(prev) + parseInt(next)) /
             filter.length
         );
       });
-      let down = [...state.breeds.sort((a, b) => b.weight - a.weight)];
+      let down = [...state.allBreeds.sort((a, b) => b.weight - a.weight)];
       return {
         ...state,
-        filterBreeds: down,
+        breeds: down,
       };
     case DELETE_BREED:
       return {
