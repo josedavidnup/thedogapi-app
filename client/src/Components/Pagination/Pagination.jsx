@@ -6,6 +6,7 @@ function Pagination({ breeds, breedsPerPage, handleSetPage, currentPage }) {
   for (let i = 1; i <= Math.ceil(breeds.length / breedsPerPage); i++) {
     numCal.push(i);
   }
+
   return (
     <>
       <div className={style.nums}>
