@@ -12,3 +12,5 @@ export const WEIGHT_FILTER_UP = 'WEIGHT_FILTER_UP';
 export const WEIGHT_FILTER_DOWN = 'WEIGHT_FILTER_DOWN';
 export const TEMPERAMENT_FILTER = 'TEMPERAMENT_FILTER';
 export const HANDLE_SET_PAGE = 'HANDLE_SET_PAGE';
+export const ERROR = 'ERROR';
+export const LOADING = 'LOADING';
