@@ -12,6 +12,8 @@ import {
   WEIGHT_FILTER_UP,
   WEIGHT_FILTER_DOWN,
   TEMPERAMENT_FILTER,
+  LOADING,
+  ERROR,
 } from '../Actions/action_types';
 
 const initialState = {
@@ -23,6 +25,8 @@ const initialState = {
   temperaments: [],
   breedsPerPage: 8,
   currentPage: 10,
+  loading: false,
+  error: '',
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -32,11 +36,23 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         breeds: payload,
         allBreeds: payload,
+        loading: false,
       };
     case GET_BY_NAME:
       return {
         ...state,
         breeds: payload,
+      };
+    case LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ERROR:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
       };
     case GET_BREED_DETAIL:
       return {

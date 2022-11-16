@@ -8,10 +8,13 @@ import Pagination from '../Pagination/Pagination';
 import Filter from '../Filters/Filter';
 import DogLoaderPage from '../Loader/DogLoaderPage';
 import BreedCard from '../BreedCard/BreedCard';
+import Error from '../Error/Error';
 function Breeds() {
   const breeds = useSelector((state) => state.breeds);
 
   const temperaments = useSelector((state) => state.temperaments);
+  const loading = useSelector((state) => state.loading);
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
 
   const [breedsPerPage] = useState(8);
@@ -25,13 +28,14 @@ function Breeds() {
     dispatch(getAllBreeds());
     dispatch(getTemperaments());
   }, [dispatch]);
-
   return (
     <>
-      {!currentPages.length ? (
+      {loading ? (
         <DogLoaderPage />
+      ) : error ? (
+        <Error message={error} />
       ) : (
-        <div>
+        <>
           <Filter temperaments={temperaments} />
           <Pagination
             breeds={breeds}
@@ -46,7 +50,7 @@ function Breeds() {
               })}
             </section>
           </main>
-        </div>
+        </>
       )}
     </>
   );

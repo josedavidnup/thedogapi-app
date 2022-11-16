@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   getFavorites,
   removeFavorites,
@@ -20,11 +20,16 @@ function BreedDetail() {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   async function getBreedDetail(id) {
-    const breed = await axios.get(`/api/dogs/${id}`);
-    return setBreed(breed.data);
+    try {
+      const breed = await axios.get(`/api/dogs/${id}`);
+      return setBreed(breed.data);
+    } catch (error) {
+      console.log('Error', error.message);
+      console.log(`Error: ${error.response.data}`);
+    }
   }
 
   // useEffect(() => {
@@ -32,7 +37,10 @@ function BreedDetail() {
   // }, [dispatch, id]);
 
   useEffect(() => {
-    return getBreedDetail(id);
+    getBreedDetail(id);
+    return () => {
+      getBreedDetail(id);
+    };
   }, [id]);
 
   // function favoriteBreed(id) {

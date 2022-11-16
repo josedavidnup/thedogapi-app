@@ -13,24 +13,19 @@ import {
   WEIGHT_FILTER_UP,
   WEIGHT_FILTER_DOWN,
   TEMPERAMENT_FILTER,
+  LOADING,
+  ERROR,
 } from './action_types';
 
-export const getAllBreeds = () => {
-  return async function (dispatch) {
-    // const favorites = getState().favorites
-    return axios
-      .get('/api/dogs')
-      .then((response) => {
-        dispatch({ type: GET_ALL_BREEDS, payload: response.data });
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        }
-      });
-  };
+export const getAllBreeds = () => async (dispatch) => {
+  // const favorites = getState().favorites
+  dispatch({ type: LOADING });
+  try {
+    const response = await axios.get('/api/dogs');
+    dispatch({ type: GET_ALL_BREEDS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: ERROR, payload: error.message });
+  }
 };
 
 export const getByName = (name) => {
