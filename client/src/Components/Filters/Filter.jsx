@@ -15,9 +15,15 @@ import {
   weightFilterDown,
 } from '../../Redux/Actions';
 
-function Filter() {
+function Filter({ setCurrentPage }) {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments);
+
+  const setTemperamentFilter = (e) => {
+    dispatch(temperamentFilter(e.target.value));
+    setCurrentPage(1);
+  };
+
   return (
     <section className={style.filter}>
       <div className={style.titleContanier}>
@@ -44,7 +50,7 @@ function Filter() {
                 className={`${style.containerSelect}`}
                 name='temperaments'
                 multiple={false}
-                onChange={(e) => dispatch(temperamentFilter(e.target.value))}
+                onChange={setTemperamentFilter}
               >
                 <option value=''>Choose Temperament</option>
                 {temperaments.map((e) => {

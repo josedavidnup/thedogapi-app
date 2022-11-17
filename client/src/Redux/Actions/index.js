@@ -28,29 +28,25 @@ export const getAllBreeds = () => async (dispatch) => {
   }
 };
 
-export const getByName = (name) => {
-  return async function (dispatch) {
-    return axios.get(`/api/dogs?name=${name}`).then((response) => {
-      dispatch({ type: GET_BY_NAME, payload: response.data });
-    });
-  };
+export const getByName = (name) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/dogs?name=${name}`);
+    dispatch({ type: GET_BY_NAME, payload: response.data });
+  } catch (error) {
+    dispatch({ type: ERROR, payload: error.message });
+  }
 };
 
-export const getBreedDetail = (id) => {
-  console.log();
-  return async (dispatch) => {
-    return axios
-      .get(`/api/dogs/${id}`)
-      .then((response) => {
-        dispatch({ type: GET_BREED_DETAIL, payload: response.data });
-      })
-      .catch(function () {
-        console.log('error');
-      });
-  };
+export const getBreedDetail = (id) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/dogs/${id}`);
+    dispatch({ type: GET_BREED_DETAIL, payload: response.data });
+  } catch (error) {
+    dispatch({ type: ERROR, payload: error.message });
+  }
 };
 
-export const createBreed = (breed) => async () => {
+export const createBreed = (breed) => async (dispatch) => {
   if (!breed.image) {
     breed.image = `https://images.unsplash.com/photo-1588794887323-0b9242b51301?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80`;
   }
@@ -68,7 +64,7 @@ export const createBreed = (breed) => async () => {
   try {
     await axios.post('/api/dogs/', dogBreed).then(alert('Creado'));
   } catch (error) {
-    alert(`Este es el error de create ${error}`);
+    dispatch({ type: ERROR, payload: error.message });
   }
 };
 
@@ -86,12 +82,13 @@ export const removeFavorites = (id) => {
   };
 };
 
-export const getTemperaments = () => {
-  return async (dispatch) => {
-    return axios.get(`/api/temperaments`).then((response) => {
-      dispatch({ type: GET_TEMPERAMENTS, payload: response.data });
-    });
-  };
+export const getTemperaments = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/temperaments`);
+    dispatch({ type: GET_TEMPERAMENTS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: ERROR, payload: error.message });
+  }
 };
 
 export const azFilter = () => {

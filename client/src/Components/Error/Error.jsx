@@ -225,6 +225,7 @@ function Error({ message }) {
         </svg>
       </div>
       <div className={style.error_msg_container}>
+        <span>Oops!</span>
         <h1>Looks like something went wrong!</h1>
         <p>Try again later</p>
         <p>{message}</p>

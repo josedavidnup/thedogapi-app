@@ -28,6 +28,7 @@ function Breeds() {
     dispatch(getAllBreeds());
     dispatch(getTemperaments());
   }, [dispatch]);
+
   return (
     <>
       {loading ? (
@@ -36,7 +37,7 @@ function Breeds() {
         <Error message={error} />
       ) : (
         <>
-          <Filter temperaments={temperaments} />
+          <Filter temperaments={temperaments} setCurrentPage={setCurrentPage} />
           <Pagination
             breeds={breeds}
             breedsPerPage={breedsPerPage}
