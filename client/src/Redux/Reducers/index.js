@@ -37,6 +37,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         breeds: payload,
         allBreeds: payload,
         loading: false,
+        error: '',
       };
     case GET_BY_NAME:
       return {

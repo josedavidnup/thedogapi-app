@@ -15,8 +15,8 @@ function AppRouter() {
       <div className='content-wrap'>
         <Routes>
           <Route path='/' element={<LandingPage />} />
-          <Route path='/home' element={<Breeds />} />
           <Route path='/home' element={<Menu />} />
+          <Route path='/home' element={<Breeds />} />
           <Route path='/home/:id' element={<BreedDetail />} />
           <Route path='/home/breed/favorites' element={<Favorites />} />
           <Route path='/home/breed/create' element={<CreateBreed />} />
