@@ -11,6 +11,10 @@ function SearchInput() {
   const dispatch = useDispatch();
 
   const breeds = useSelector((state) => state.breeds);
+  // const firstFiveBreeds = state.slice(0, 5);
+  const loading = useSelector((state) => state.loading);
+
+  // console.log(firstFiveBreeds);
 
   function handleOnChange(e) {
     setState(e.target.value);
@@ -35,14 +39,20 @@ function SearchInput() {
             placeholder='Search Breed...'
             className={style.input}
           />
+          <button
+            type='submit'
+            className={style.buttonSearch}
+            // onClick={dispatch(getByName(state))}
+          >
+            <TfiSearch />
+          </button>
         </form>
-        <button type='submit' className={style.buttonSearch}>
-          <TfiSearch />
-        </button>
       </div>
       {state && (
         <ul className={style.listSearch}>
-          {!breeds.length ? (
+          {loading ? (
+            <li>Searching...</li>
+          ) : !breeds.length ? (
             <li>Not found</li>
           ) : (
             breeds.map((t) => {

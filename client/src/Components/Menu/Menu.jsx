@@ -20,10 +20,10 @@ function Menu() {
           <Link to={`/home`} style={{ textDecoration: 'none' }}>
             <li className={style.lis}>Home</li>
           </Link>
-          <Link to={`/home/breed/favorites`} style={{ textDecoration: 'none' }}>
+          <Link to={`/home/favorites`} style={{ textDecoration: 'none' }}>
             <li className={style.lis}>Favorites</li>
           </Link>
-          <Link to={`/home/breed/create`} style={{ textDecoration: 'none' }}>
+          <Link to={`/home/create`} style={{ textDecoration: 'none' }}>
             <li className={style.lis}>Create</li>
           </Link>
         </ul>

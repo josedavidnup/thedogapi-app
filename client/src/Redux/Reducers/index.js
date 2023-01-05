@@ -43,6 +43,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         breeds: payload,
+        error: '',
       };
     case LOADING:
       return {
@@ -59,6 +60,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         breedDetail: payload,
+        loading: false,
+        error: '',
       };
     case GET_FAVORITES:
       return {

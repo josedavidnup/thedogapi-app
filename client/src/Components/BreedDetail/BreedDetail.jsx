@@ -8,9 +8,9 @@ import {
 } from '../../Redux/Actions';
 import axios from 'axios';
 import style from './BreedDetail.module.css';
-import blackheart from '../../Assets/Images/black-heart.svg';
-import redheart from '../../Assets/Images/red-heart.svg';
-import backArrow from '../../Assets/Images/back-arrow.svg';
+import { FcLike } from 'react-icons/fc';
+import { FcDislike } from 'react-icons/fc';
+import { BiArrowBack } from 'react-icons/bi';
 import DogLoaderPage from '../Loader/DogLoaderPage';
 
 function BreedDetail() {
@@ -100,13 +100,9 @@ function BreedDetail() {
             <article className={style.card} key={breed.id}>
               <button
                 className={style.buttoncitoBack}
-                onClick={() => history.goBack()}
+                onClick={() => history(-1)}
               >
-                <img
-                  src={backArrow}
-                  alt='goBackHome'
-                  className={style.delete}
-                />
+                <BiArrowBack />
               </button>
               <button
                 className={style.buttoncito}
@@ -116,15 +112,7 @@ function BreedDetail() {
                     : dispatch(removeFavorites(breed.id))
                 }
               >
-                {favoriteBreed(breed.id) ? (
-                  <img src={redheart} alt='like' className={style.delete} />
-                ) : (
-                  <img
-                    src={blackheart}
-                    alt='dislike'
-                    className={style.delete}
-                  />
-                )}
+                {favoriteBreed(breed.id) ? <FcDislike /> : <FcLike />}
               </button>
               <figure>
                 <img

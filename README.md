@@ -1,98 +1,67 @@
-![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
+# PERN APP - Dog Breeds
 
-# Individual Project - Henry Dogs
+<img height="200" src="./dog.jpg" />
 
-<img height="200" src="./dog.png" />
+## Project goals
 
-## Objetivos del Proyecto
+- Build an App using React, Redux, Node and Sequelize.
+- Affirm and connect the concepts learned in the race.
+- Learn best practices.
+- Learn and practice the GIT workflow.
 
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
+## Starting
 
-## Horarios y Fechas
+1. Fork the repository to have a copy of it on your accounts
+2. Clone the repository on your computers to start working
 
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
+You will have a `boilerplate` with the general structure of both the server and the client.
 
-## Comenzando
+**IMPORTANT:** It is necessary to have at least the latest stable version of Node and NPM. Make sure you have it in order to correctly install the dependencies needed to run the project.
 
- 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
- 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
+Currently the required versions are:
 
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
+- **Node**: 12.18.3 or higher
+- **NPM**: 6.14.16 or higher
 
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-
-Actualmente las versiónes necesarias son:
-
-- __Node__: 12.18.3 o mayor
-- __NPM__: 6.14.16 o mayor
-
-Para verificar que versión tienen instalada:
+To check which version you have installed:
 
 ```bash
 node -v
 npm -v
 ```
 
-__ACLARACIÓN:__ Las dependencias actuales se encuentran en las versiones que venimos trabajando durante el bootcamp.
-
-Versiones:
-
-- __react__: 17.0.1
-- __react-dom__: 17.0.1
-- __react-router-dom__: 5.2.0
-- __redux__: 4.0.5
-- __react-redux__: 7.2.3
-
-Está permitido, __bajo su responsabilidad__, actualizar las dependencias a versiones más actuales.
-
-> __IMPORTANTE:__ Versiones mas actuales podrían presentar configuraciones diferentes respecto a las versiones en las que venimos trabajando durante el bootcamp.
-
 ## BoilerPlate
 
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
+The boilerplate has two folders: `api` and `client`. In these folders will be the code of the back-end and the front-end respectively.
 
-En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
+In `api` create a file called: `.env` that has the following form:
 
 ```env
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
+DB_USER=postgresUser
+DB_PASSWORD=postgresPassword
 DB_HOST=localhost
 ```
 
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
+Replace `postgresUser` and `postgresPassword` with your own credentials to connect to postgres. This file will be ignored on github upload, as it contains sensitive information (credentials).
 
-Adicionalmente será necesario que creen desde psql una base de datos llamada `dogs`
+Additionally, it will be necessary to create from psql a database called `dogs`
 
-El contenido de `client` fue creado usando: Create React App.
+The `client` content was created using: Create React App.
 
-## Enunciado
+## Description
 
-a idea general es crear una aplicación en la cual se puedan ver distintas razas de perro junto con información relevante de las mismas utilizando la api externa [the dog api](https://thedogapi.com/) y a partir de ella poder, entre otras cosas:
+The general idea is to create an application in which you can see different dog breeds along with relevant information about them using the external api [the dog api](https://thedogapi.com/) and from it be able, among other things:
 
-- Buscar perros
-- Filtrarlos / Ordenarlos
-- Agregar nuevos perros
+- Search dogs
+- Filter / Sort them
+- Add favorite dogs
+- Add new dogs
 
-__IMPORTANTE__: Para poder utilizar esta API externa es necesario crearse una cuenta para obtener una API Key que luego debera ser incluida en todos los request que hagamos a rawg simplemente agregando `?api_key={YOUR_API_KEY}` al final de cada endpoint. Agregar la clave en el archivo `.env` para que la misma no se suba al repositorio por cuestiones de seguridad y utilizarla desde allí.
+**IMPORTANT**: To be able to use this external API it is necessary to create an account to obtain an API Key that must then be included in all the requests we make to rawg simply by adding `?api_key={YOUR_API_KEY}` at the end of each endpoint . Add the key in the `.env` file so that it is not uploaded to the repository for security reasons and use it from there.
 
-__IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO pueden utilizar los endpoints de la API externa que ya devuelven los resultados filtrados u ordenados sino que deben realizarlo ustedes mismos. En particular alguno de los ordenamientos o filtrados debe si o si realizarse desde el frontend.
+**IMPORTANT**: For the filtering and sorting functionalities you can NOT use the external API endpoints that already return the filtered or ordered results but you must do it yourself. In particular, some of the ordering or filtering must be done from the frontend.
 
-### Únicos Endpoints/Flags que pueden utilizar
-
-- GET <https://api.thedogapi.com/v1/breeds>
-- GET <https://api.thedogapi.com/v1/breeds/search?q={raza_perro}>
-
-### Requerimientos mínimos
-
-A continuación se detallaran los requerimientos mínimos para la aprobación del proyecto individial. Aquellos que deseen agregar más funcionalidades podrán hacerlo. En cuanto al diseño visual no va a haber wireframes ni prototipos prefijados sino que tendrán libertad de hacerlo a su gusto pero tienen que aplicar los conocimientos de estilos vistos en el curso para que quede agradable a la vista.
-
-__IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estilos a la aplicación. Tendrán que utilizar CSS con algunas de las opciones que vimos en dicha clase (CSS puro, CSS Modules o Styled Components)
-
-#### Tecnologías necesarias
+#### Used technologies
 
 - [ ] React
 - [ ] Redux
@@ -101,93 +70,81 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 
 ## Frontend
 
-Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
+A React/Redux app should be developed that contains the following screens/routes.
 
-__Pagina inicial__: deben armar una landing page con
+**Initial page**: It is a landing page with:
 
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+- [ ] Some background image representative of the project
+- [ ] Button to enter home (`Main route`)
 
-__Ruta principal__: debe contener
+**Main path**: contains:
 
-- [ ] Input de búsqueda para encontrar razas de perros por nombre
-- [ ] Área donde se verá el listado de razas de perros. Deberá mostrar su:
-  - Imagen
-  - Nombre
-  - Temperamento
-  - Peso
-- [ ] Botones/Opciones para filtrar por:
-  - Temperamento
-  - Raza existente (es decir las que vienen de la API) o agregada por nosotros (creadas mediante el form)
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las razas de perro por:
-  - Orden alfabético
-  - Peso
-- [ ] Paginado para ir buscando y mostrando las siguientes razas, mostrando 8 razas por página.
+- [ ] Search input to find dog breeds by name
+- [ ] Area where the list of dog breeds will be seen. You will need to show your:
+  - Image
+  - Name
+  - Temper
+  - Weight
+- [ ] Buttons/Options to filter by:
+  - Temper
+  - Existing race (that is, those that come from the API) or added by us (created through the form)
+- [ ] Buttons/Options to sort both ascending and descending dog breeds by:
+  - Alphabetical order
+  - Weight
+- [ ] Paginated to search and display the following breeds, showing 8 breeds per page.
 
-__IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las razas de perros traidas desde la API como así también las de la base de datos, pero NO está permitido almacenar en la base de datos las razas de perros de la API sino que solamente se pueden guardar aquellas creadas desde el form.
+**Dog Breed Detail Path** - Contains
 
-__Ruta de detalle de raza de perro__: debe contener
+- [ ] The fields shown in the main route for each breed (image, name and temperament)
+- [ ] Height
+- [ ] Weight
+- [ ] Years of life
 
-- [ ] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
-- [ ] Altura
-- [ ] Peso
-- [ ] Años de vida
+**Dog Breed Creation Path** - Contains
 
-__Ruta de creación de raza de perro__: debe contener
+- [ ] A form **controlled with JavaScript** with the following fields:
+  - Name
+  - Height (Differentiate between minimum and maximum height)
+  - Weight (Differentiate between minimum and maximum weight)
+  - Years of life
+- [ ] Possibility to select/add one or more temperaments
+- [ ] Button/Option to create a new breed of dog
 
-- [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
-  - Nombre
-  - Altura (Diferenciar entre altura mínima y máxima)
-  - Peso (Diferenciar entre peso mínimo y máximo)
-  - Años de vida
-- [ ] Posibilidad de seleccionar/agregar uno o más temperamentos
-- [ ] Botón/Opción para crear una nueva raza de perro
+## Database
 
-> Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre de la raza no pueda contener números o símbolos, que el peso/altura mínimo no pueda ser mayor al máximo y viceversa, etc.
+The database model has the following entities
 
-## Base de datos
+- [ ] Breed with the following properties:
+      -ID\
+  - Name \
+  - Height \
+  - Weight \
+  - Years of life
+- [ ] Temperament with the following properties:
+      -ID
+  - Name
 
-El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
-
-- [ ] Raza con las siguientes propiedades:
-  - ID *
-  - Nombre *
-  - Altura *
-  - Peso *
-  - Años de vida
-- [ ] Temperamento con las siguientes propiedades:
-  - ID
-  - Nombre
-
-La relación entre ambas entidades debe ser de muchos a muchos ya que una raza de perro puede tener varios "temperamentos" en simultaneo y, a su vez, un "temperamento" puede corresponder a múltiples razas de perro distintas. Por ejemplo la raza `pug` es docil, inteligente y sociable (entre otras). Pero a su vez existen otras razas de perro que también son sociables o inteligentes.
-
-__IMPORTANTE__: Pensar como modelar los IDs de las razas de perros en la base de datos. Existen distintas formas correctas de hacerlo pero tener en cuenta que cuando hagamos click en alguna, esta puede provenir de la API o de la Base de Datos por lo que cuando muestre su detalle no debería haber ambigüedad en cual se debería mostrar. Por ejemplo si en la API la raza `Pug` tiene id = 1 y en nuestra base de datos creamos una nueva raza `Henry Pug` con id = 1, ver la forma de diferenciarlas cuando querramos acceder al detalle de la misma.
+The associations between both entities is many-to-many since a dog breed can have several "temperaments" simultaneously and, in turn, a "temperament" can correspond to multiple different dog breeds. For example, the `pug` breed is docile, intelligent and sociable (among others). But at the same time, there are other dog breeds that are also sociable or intelligent.
 
 ## Backend
 
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
+The server is developed in Node/Express with the following routes:
 
-__IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
+**IMPORTANT**: Filtering, sorting, paging and these features are implemented and created without using the external API features.
 
-- [ ] __GET /dogs__:
-  - Obtener un listado de las razas de perro
-  - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] __GET /dogs?name="..."__:
-  - Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
-  - Si no existe ninguna raza de perro mostrar un mensaje adecuado
-- [ ] __GET /dogs/{idRaza}__:
-  - Obtener el detalle de una raza de perro en particular
-  - Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
-  - Incluir los temperamentos asociados
-- [ ] __POST /dogs__:
-  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro por body
-  - Crea una raza de perro en la base de datos relacionada con sus temperamentos
-- [ ] __GET /temperaments__:
-  - Obtener todos los temperamentos posibles
-  - En una primera instancia deberán obtenerlos desde la API externa y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
-
-## Testing
-
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
-- [ ] Al menos tener una ruta del backend con sus tests respectivos
-- [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
+- [ ] **GET /dogs**:
+  - Get a list of dog breeds
+  - Returns only the data needed for the parent path
+- [ ] **GET /dogs?name="..."**:
+  - Get a list of dog breeds that contain the word entered as query parameter
+  - If no dog breed exists, display an appropriate message
+- [ ] **GET /dogs/{idBreed}**:
+  - Get the detail of a particular dog breed
+  - Brings only the data requested in the dog breed detail route
+  - Include associated temperaments
+- [ ] **POST /dogs**:
+  - Receives the data collected from the controlled form of the dog breed creation path by body
+  - Create a dog breed in the database related to their temperaments
+- [ ] **GET /temperaments**:
+  - Get all possible temperaments
+  - In the first instance they are obtained from the external API and stored in their own database and then used from there

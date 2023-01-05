@@ -52,7 +52,9 @@ function Filter({ setCurrentPage }) {
                 multiple={false}
                 onChange={setTemperamentFilter}
               >
-                <option value=''>Choose Temperament</option>
+                <option value='' disabled>
+                  Choose Temperament
+                </option>
                 {temperaments.map((e) => {
                   return (
                     <option key={e.name} value={e.name}>
