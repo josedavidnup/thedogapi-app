@@ -38,6 +38,7 @@ export const getByName = (name) => async (dispatch) => {
 };
 
 export const getBreedDetail = (id) => async (dispatch) => {
+  dispatch({ type: LOADING });
   try {
     const response = await axios.get(`/api/dogs/${id}`);
     dispatch({ type: GET_BREED_DETAIL, payload: response.data });

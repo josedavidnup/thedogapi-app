@@ -6,23 +6,28 @@ import BreedDetail from '../../Components/BreedDetail/BreedDetail.jsx';
 import CreateBreed from '../../Components/CreateBreed/CreateBreed';
 import Favorites from '../../Components/Favorites/Favorites';
 import Footer from '../../Components/Footer/Footer';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './AppRouter.css';
-
+import Error from '../Error/Error';
 function AppRouter() {
   return (
     <div className='page-container'>
-      <div className='content-wrap'>
+      <Router>
+        <Menu />
         <Routes>
+          {/* <Route path='home' element={<Menu />} /> */}
           <Route path='/' element={<LandingPage />} />
-          <Route path='/home' element={<Menu />} />
+          <Route path='/landing' element={<LandingPage />} />
           <Route path='/home' element={<Breeds />} />
           <Route path='/home/:id' element={<BreedDetail />} />
-          <Route path='/home/breed/favorites' element={<Favorites />} />
-          <Route path='/home/breed/create' element={<CreateBreed />} />
-          <Route path='*/home' element={<Footer />} />
+          <Route path='/home/favorites' element={<Favorites />} />
+          <Route path='/home/create' element={<CreateBreed />} />
+          <Route path='*' element={<Error />} />
+          <Route path='*/home' element={<Error />} />
+          {/* <Route path='home' element={<Footer />} /> */}
         </Routes>
-      </div>
+        <Footer />
+      </Router>
     </div>
   );
 }

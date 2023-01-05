@@ -49,6 +49,7 @@ input {
 
 body {
   position: relative;
+  background-color: #f1f1f1;
 }
 
 /* body {
@@ -61,4 +62,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.icon {
+  width: 100px;
 }

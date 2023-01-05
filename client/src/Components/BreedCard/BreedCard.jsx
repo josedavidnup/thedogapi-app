@@ -2,10 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getFavorites, removeFavorites } from '../../Redux/Actions';
-import blackheart from '../../Assets/Images/black-heart.svg';
-import redheart from '../../Assets/Images/red-heart.svg';
 import style from './BreedCard.module.css';
-
+import { FcLike } from 'react-icons/fc';
+import { FcDislike } from 'react-icons/fc';
 function BreedCard({ breed }) {
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
@@ -22,11 +21,7 @@ function BreedCard({ breed }) {
             : dispatch(removeFavorites(breed.id))
         }
       >
-        {favoriteBreed(breed.id) ? (
-          <img src={redheart} alt='like' className={style.delete} />
-        ) : (
-          <img src={blackheart} alt='dislike' className={style.delete} />
-        )}
+        {favoriteBreed(breed.id) ? <FcDislike /> : <FcLike />}
       </button>
       <figure>
         <img src={breed.image} alt={breed.name} className={style.image} />
