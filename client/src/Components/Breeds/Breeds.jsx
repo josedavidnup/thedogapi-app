@@ -25,9 +25,13 @@ function Breeds() {
   const handleSetPage = (num) => setCurrentPage(num);
 
   useEffect(() => {
-    dispatch(getAllBreeds());
-    dispatch(getTemperaments());
-  }, [dispatch]);
+    if (!breeds.length) {
+      dispatch(getAllBreeds());
+    }
+    if (!temperaments.length) {
+      dispatch(getTemperaments());
+    }
+  }, [breeds.length, dispatch, temperaments.length]);
 
   return (
     <>
