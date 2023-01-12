@@ -15,7 +15,6 @@ function AppRouter() {
       <Router>
         <Menu />
         <Routes>
-          {/* <Route path='home' element={<Menu />} /> */}
           <Route path='/' element={<LandingPage />} />
           <Route path='/landing' element={<LandingPage />} />
           <Route path='/home' element={<Breeds />} />
@@ -24,7 +23,6 @@ function AppRouter() {
           <Route path='/home/create' element={<CreateBreed />} />
           <Route path='*' element={<Error />} />
           <Route path='*/home' element={<Error />} />
-          {/* <Route path='home' element={<Footer />} /> */}
         </Routes>
         <Footer />
       </Router>
