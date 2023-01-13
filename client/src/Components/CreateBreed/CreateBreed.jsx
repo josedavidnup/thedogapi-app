@@ -62,8 +62,6 @@ function CreateBreed() {
     });
   };
 
-  // console.log(form);
-  // console.log(errors);
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (
