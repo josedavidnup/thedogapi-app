@@ -46,26 +46,6 @@ const getBreeds = async (name) => {
   }
 };
 
-/* const getDogByName = async (name) => {
-  try {
-    if (!name) {
-      throw new Error('No mandaste nombre');
-    }
-    const allDogs = await getDogs();
-    const apiDog = allDogs.filter((dog) =>
-      dog.name.toLowerCase().includes(name.trim().toLowerCase())
-    );
-    if (!apiDog.length) {
-      throw new Error(`Dog's name not found`);
-    }
-    return apiDog;
-  } catch (err) {
-    return {
-      error: err.message,
-    };
-  }
-}; */
-
 const getBreedById = async (id) => {
   const allDogs = await getBreeds();
   const apiDog = allDogs.find((dog) => dog.id == id);
@@ -131,11 +111,3 @@ module.exports = {
   deleteBreed,
   // getDogByName,
 };
-
-// {
-//  img: img,
-//  name: name,
-//  height: `${minHeight} - ${maxHeight}` ,
-//  weight: `${minWeight} - ${maxWeight}`,
-//  age: `${minAge} - ${maxAge}`,
-// }

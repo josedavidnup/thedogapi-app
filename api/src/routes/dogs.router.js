@@ -22,16 +22,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-/* router.get('/search', async (req, res, next) => {
-  const { name } = req.query;
-  try {
-    const dog = await getDogByName(name);
-    res.status(200).json(dog);
-  } catch (error) {
-    next(error);
-  }
-}); */
-
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -123,11 +113,3 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 module.exports = router;
-
-// {
-//  img: img,
-//  name: name,
-//  height: `${minHeight} - ${maxHeight}` ,
-//  weight: `${minWeight} - ${maxWeight}`,
-//  age: `${minAge} - ${maxAge}`,
-// }

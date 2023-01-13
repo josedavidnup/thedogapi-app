@@ -18,13 +18,3 @@ const getTemperaments = async () => {
 module.exports = {
   getTemperaments,
 };
-
-// let temperamentList = await getTemperaments();
-//   let id = 0;
-//   temperamentList = temperamentList.map((temperament) => {
-//     return {
-//       name: temperament,
-//     };
-//   });
-//   console.log(temperamentList);
-//   // await Temperament.bulkCreate(temperamentList);

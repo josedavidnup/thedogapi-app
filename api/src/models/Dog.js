@@ -109,9 +109,3 @@ module.exports = (sequelize) => {
     { timestamps: false }
   );
 };
-//  Raza con las siguientes propiedades:
-// ID *
-// Nombre *
-// Altura *
-// Peso *
-// Años de vida
