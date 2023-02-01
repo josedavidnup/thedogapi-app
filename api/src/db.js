@@ -10,7 +10,7 @@ const {
 } = require('../utils/config');
 
 const sequelize = new Sequelize(
-  `postgres://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`,
+  `postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`,
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -43,11 +43,19 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Dog, Temperament } = sequelize.models;
+const { Dog, Temperament, User } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
+User.belongsToMany(Dog, {
+  through: 'UserDogs',
+  timestamps: false,
+});
+Dog.belongsToMany(User, {
+  through: 'UserDogs',
+  timestamps: false,
+});
 Dog.belongsToMany(Temperament, {
   through: 'DogTemperaments',
   timestamps: false,
