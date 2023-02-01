@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const { Temperament } = require('../db');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+const passport = require('passport');
 const router = Router();
 const {
   getBreeds,
@@ -32,21 +31,11 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
-  const {
-    name,
-    min_height,
-    max_height,
-    min_weight,
-    max_weight,
-    min_life_span,
-    max_life_span,
-    image,
-    temperaments,
-  } = req.body;
-
-  try {
-    const newDog = await createBreed(
+router.post(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res, next) => {
+    const {
       name,
       min_height,
       max_height,
@@ -54,17 +43,31 @@ router.post('/', async (req, res, next) => {
       max_weight,
       min_life_span,
       max_life_span,
-      image
-    );
-    const temp = await Temperament.findAll({
-      where: { name: temperaments },
-    });
-    await newDog.addTemperaments(temp);
-    res.status(200).json(newDog);
-  } catch (err) {
-    next(err);
+      image,
+      temperaments,
+    } = req.body;
+
+    try {
+      const newDog = await createBreed(
+        name,
+        min_height,
+        max_height,
+        min_weight,
+        max_weight,
+        min_life_span,
+        max_life_span,
+        image
+      );
+      const temp = await Temperament.findAll({
+        where: { name: temperaments },
+      });
+      await newDog.addTemperaments(temp);
+      res.status(200).json(newDog);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 router.patch('/:id', async (req, res, next) => {
   const { id } = req.params;
